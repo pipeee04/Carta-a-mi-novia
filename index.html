@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Laura 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --pink:#ff60b4;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:radial-gradient(circle at top, #1b1b1b, #000);
+  color:#fff;
+  font-family:'VT323', monospace;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  overflow:hidden;
+}
+
+#container{
+  width:92%;
+  max-width:900px;
+  min-height:520px;
+  background:#0a0a0a;
+  border:2px solid rgba(255,255,255,.15);
+  border-radius:22px;
+  padding:40px;
+  box-shadow:0 0 120px rgba(255,96,180,.25);
+}
+
+.scene{display:none;text-align:center}
+.scene.active{display:block}
+
+h1,h2{
+  margin:0 0 22px;
+  white-space:nowrap;
+  overflow:hidden;
+  border-right:.15em solid #fff;
+  animation:typing 4s steps(60,end), blink .75s step-end infinite;
+}
+
+h2{
+  animation-delay:.7s;
+  width:0;
+  animation-fill-mode:forwards;
+}
+
+@keyframes typing{from{width:0}to{width:100%}}
+@keyframes blink{50%{border-color:transparent}}
+
+.text{
+  font-size:28px;
+  line-height:1.9;
+  animation:fadeIn 2s forwards;
+}
+
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+.choice{
+  margin-top:35px;
+  cursor:pointer;
+  font-size:32px;
+  transition:.25s;
+}
+
+.choice:hover{
+  color:var(--pink);
+  transform:scale(1.08);
+}
+
+.final-love{
+  font-size:42px;
+  color:var(--pink);
+  margin-top:40px;
+  animation:fadeIn 3s forwards;
+}
+
+.heart{
+  position:fixed;
+  font-size:22px;
+  animation:fall linear forwards;
+  pointer-events:none;
+}
+
+@keyframes fall{
+  from{transform:translateY(-10vh);opacity:1}
+  to{transform:translateY(110vh);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 Música local -->
+<audio id="music" src="cancion.mp3" loop></audio>
+
+<div id="container">
+
+  <div class="scene active" id="s1">
+    <h1>Laura 💖</h1>
+    <h2>¿te quedas un momento conmigo?</h2>
+    <div class="choice" onclick="start()">> sí, me quedo</div>
+    <div class="choice" onclick="start()">> siempre contigo</div>
+  </div>
+
+  <div class="scene" id="s2">
+    <h1>Gracias por estar aquí</h1>
+    <h2>esto nace desde lo más profundo de mí</h2>
+    <div class="choice" onclick="go(3)">> continúa</div>
+  </div>
+
+  <div class="scene" id="s3">
+    <div class="text">
+      Hoy, <b>15 de enero</b>, es uno de esos días que quiero guardar para siempre.<br><br>
+      Cumplimos <b>un año</b> siendo pareja, un año compartiendo la vida,
+      descubriéndonos poco a poco y aprendiendo a caminar juntos,
+      incluso cuando el camino no siempre fue sencillo.
+    </div>
+    <div class="choice" onclick="go(4)">> sigue…</div>
+  </div>
+
+  <div class="scene" id="s4">
+    <div class="text">
+      Todavía recuerdo el día en que te conocí,
+      en aquella clase de <b>álgebra</b>.<br><br>
+      No alcanzabas a ver bien, y ese gesto tan pequeño,
+      tan inocente y tan tierno,
+      se quedó grabado en mi corazón sin que yo lo supiera.<br><br>
+      Desde ese instante me gustaste…
+      y hoy puedo decir, sin ninguna duda,
+      que me gustas <b>muchísimo más que nunca</b>.
+    </div>
+    <div class="choice" onclick="go(5)">> 💗</div>
+  </div>
+
+  <div class="scene" id="s5">
+    <div class="text">
+      Agradezco profundamente cada cosa que hemos vivido juntos:<br><br>
+      cada cita, cada visita, cada beso,
+      cada regalo, cada abrazo,
+      cada “te amo” dicho con nervios,
+      y cada “te amo” dicho con certeza.<br><br>
+      No cambiaría nada,
+      porque todo nos trajo hasta aquí.
+    </div>
+    <div class="choice" onclick="go(6)">> continúa</div>
+  </div>
+
+  <div class="scene" id="s6">
+    <div class="text">
+      Laura…<br><br>
+      <b>eres la mujer más hermosa del mundo</b>,
+      no solo por cómo te ves,
+      sino por cómo amas,
+      cómo cuidas,
+      cómo iluminas mis días.<br><br>
+      No sé qué sería de mí en este momento sin ti,
+      y agradezco la vida por haberte puesto en mi camino.
+    </div>
+    <div class="choice" onclick="go(7)">> 🥺</div>
+  </div>
+
+  <div class="scene" id="s7">
+    <div class="text">
+      Te amo demasiado.<br><br>
+      Te amo por lo que eres,
+      por lo que hemos sido,
+      y por todo lo que aún nos falta por vivir.<br><br>
+      Quiero seguir caminando a tu lado,
+      creciendo contigo,
+      construyendo sueños juntos,
+      y haciendo de lo cotidiano algo especial.
+    </div>
+    <div class="choice" onclick="go(8)">> 💖</div>
+  </div>
+
+  <!-- PREGUNTA -->
+  <div class="scene" id="s8">
+    <h1>Laura…</h1>
+    <h2>¿quieres continuar este camino conmigo?</h2>
+    <div class="choice" onclick="go(9)">> sí, contigo siempre</div>
+    <div class="choice" onclick="go(9)">> elijo este camino contigo ❤️</div>
+  </div>
+
+  <!-- MENSAJE FINAL -->
+  <div class="scene" id="s9">
+    <div class="final-love">
+      Te amo demasiado,<br>
+      con todo mi corazón 💖
+    </div>
+  </div>
+
+</div>
+
+<script>
+function start(){
+  document.getElementById('music').play();
+  go(2);
+}
+
+function go(n){
+  document.querySelectorAll('.scene').forEach(s=>s.classList.remove('active'));
+  document.getElementById('s'+n).classList.add('active');
+}
+
+// Corazones 💗
+setInterval(()=>{
+  const h=document.createElement('div');
+  h.className='heart';
+  h.textContent='💗';
+  h.style.left=Math.random()*100+'vw';
+  h.style.animationDuration=4+Math.random()*4+'s';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),9000);
+},600);
+</script>
+
+</body>
+</html>
+
